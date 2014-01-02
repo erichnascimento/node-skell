@@ -1,0 +1,9 @@
+{
+    "name": ""
+  , "description": ""
+  , "version": "0.0.1"
+  , "author": "Erich Nascimento <erichnascimento@gmail.com>"
+  , "keywords": []
+  , "main": "./bin/node-skell"
+  , "engines": { "node": ">= 0.2.0" }
+}

@@ -1,0 +1,79 @@
+#!/usr/bin/env sh
+
+# Library version
+
+VERSION="0.0.1"
+
+APP_NAME="{App title}"
+
+#
+# Output usage information.
+#
+
+display_help() {
+  cat <<-help
+
+  Usage: n [options] <version>
+
+  Options:
+
+  -V, --version   Output current version of n
+  -h, --help      Display help information
+help
+  exit 0
+}
+
+#
+# Output current version
+#
+
+display_current_version() {
+  echo $VERSION && exit 0
+}
+
+
+
+# Handle arguments
+
+if test $# -eq 0; then
+  touch History.md \
+    Makefile \
+    Readme.md \
+    index.js \
+    package.json
+  
+  # Create Readme.me file
+
+  cat > Readme.md <<-CONTENT
+# $APP_NAME
+
+## License
+
+(The MIT License)
+
+Copyright (c) 2014 Erich Nascimento &lt;erichnascimento@gmail.com&gt;
+CONTENT
+
+  # Create package.json file
+
+  cat > package.json <<-CONTENT
+{
+    "name": ""
+  , "description": ""
+  , "version": "0.0.1"
+  , "author": "Erich Nascimento <erichnascimento@gmail.com>"
+  , "keywords": []
+  , "main": "./lib/mylib.js"
+  , "engines": { "node": ">= 0.2.0" }
+} 
+CONTENT
+
+else
+  while test $# -ne 0; do
+    case $1 in
+      -V|--version) display_current_version ;;
+      -h|--help) display_help ;;
+    esac
+    shift
+  done
+fi
